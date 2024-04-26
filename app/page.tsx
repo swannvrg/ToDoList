@@ -56,21 +56,22 @@ export default function TodoList() {
       
       <h1 className="text-center mt-5" >Ma To Do List</h1>
       <div className="row">
-        <div className="col-2"></div>
-    <div className="bg-light text-center p-5 rounded col-8 border mt-4  ">
+        <div className="col-1 col-md-2"></div>
+    <div className="bg-light text-center p-5 rounded col-10 col-md-8 border mt-4  ">
       
       <div className="">
         <label className="mb-4 fs-4" htmlFor="taskInput">Ajouter vos tâches :</label><br />
-        <div className="row mb-4">
+        <div className="row mb-4 d-flex justify-content-center">
         <input
           type="text"
           id="taskInput"
           value={tache}
           onChange={handleChange}
-          className=" offset-2 col-6 me-3"
+          className=" offset-md-1 col-10 col-md-7 me-md-3 mt-2"
           placeholder="Entrez une tache"
         />
-        <button className="btn btn-primary col-2 " onClick={addTask} >Ajouter</button>
+        <button className="btn btn-primary col-md-3 col-8 col-sm-6 mt-2 " onClick={addTask} >Ajouter</button>
+        
       </div>
       </div>
       <div>
@@ -86,12 +87,13 @@ export default function TodoList() {
                   onChange={() => handleCheckboxChange(item.id)}
                 />
                 <label
-                  className={`form-check-label ${
-                    item.completed ? "text-decoration-line-through" : ""
-                  }`}
-                >
-                  {item.task}
-                </label>
+                        className={`form-check-label ${
+                          item.completed ? "text-decoration-line-through" : ""
+                        } word-wrap`} // Ajout de la classe "word-wrap"
+                        style={{ wordBreak: "break-all", hyphens: "auto" }} // Forcer le retour à la ligne avec tiret
+                      >
+                        {item.task}
+                      </label>
               </div>
               <button
                 onClick={() => deleteTask(item.id)}
